@@ -1,6 +1,6 @@
 ﻿namespace HackathonService.Dtos
 {
-    public class HackathonEvents
+    public class HackathonEvent
     {
         public Guid id { get; set; }
         public string name { get; set; }

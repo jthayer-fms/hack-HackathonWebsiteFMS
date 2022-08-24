@@ -1,7 +1,10 @@
-﻿namespace HackathonService.Dtos
+﻿using HackathonService.Dtos;
+
+namespace HackathonService.Domains
 {
-    public class Pitches
-    {  
+    public class PitchDomain
+    {
+        public Guid eventId { get; set; }
         public Guid id { get; set; }
         public string? description { get; set; }
 
@@ -12,6 +15,5 @@
         public List<User>? TeamMembers { get; set; }
 
         public int votes { get; set; }
-
     }
 }
