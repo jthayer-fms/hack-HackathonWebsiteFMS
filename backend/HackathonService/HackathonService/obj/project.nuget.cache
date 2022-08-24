@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "NTwo32ASneQJ58PWIIzVmm0NHla+pcI9DPDVChyd2l0m0eiTh8r0X9JQQQvu4eZpPa0TxJ9NdOs45EmeRtOQdQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jzhang\\Documents\\GitHub\\hack-HackathonWebsiteFMS\\backend\\HackathonService\\HackathonService\\HackathonService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jzhang\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\jzhang\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\jzhang\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\jzhang\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\jzhang\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\jzhang\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
