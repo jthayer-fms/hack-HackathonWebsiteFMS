@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "jUzTUveEg0QBBjyE1KpQo1eNEM52XVnr7JLNvX3tKQFIvEpPNz0bEdLg9EW5ABfDlMFKaG1FfMIVBK3sXeU3+A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jthayer\\source\\repos\\jthayerFM\\hack-HackathonWebsiteFMS\\backend\\HackathonWebsiteAPI\\HackathonWebsiteAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jthayer\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\jthayer\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\jthayer\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\jthayer\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\jthayer\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\jthayer\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
