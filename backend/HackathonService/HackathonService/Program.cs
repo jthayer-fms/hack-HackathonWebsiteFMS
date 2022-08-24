@@ -1,19 +1,32 @@
 using HackathonService.Dtos;
+using HackathonService.Providers;
 using HackathonService.Queries;
 using HackathonService.RequestDtos;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
+using HackathonService.Services;
+using Microsoft.AspNetCore.Cors;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var AllowSpecificOrigins = "AllowSpecificOrigins";
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddScoped<IEvents,Events>();
+builder.Services.AddTransient<IPitchProvider, PitchProvider>();
+builder.Services.AddTransient<IPitchService, PitchService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:3000");
+                      });
+
+});
 
 
 var app = builder.Build();
+app.UseCors(AllowSpecificOrigins);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,11 +53,11 @@ app.MapPost("/pitch", async (IEvents eventProvider, CreatePitchRequest pitch, Gu
     }
     else
     {   
-        return Results.Created($"/pitch/{pitchId}", pitch);
+        return Results.Created($"/pitch", pitch);
     }
 });
 
-app.MapGet("/pitches", async () => {
+app.MapGet("/pitches", [EnableCors("AllowSpecificOrigins")] async () => {
 
     List<Pitch> pitches = new List<Pitch>();
     var pitch1 = new Pitch(Guid.NewGuid(), Guid.NewGuid(), "Hackathon Website", new User("Michael Crawford"));
@@ -69,9 +82,15 @@ app.MapPut("/pitch/unVote", async (Pitch pitchId, string userId) => {
     return Results.Created($"/pitch/{pitchId}", userId);
 });
 
-app.MapPut("/pitch/signUp", async (Pitch pitchId, string userId) => {
+app.MapPut("/pitch/signUp", async (IPitchService service, Guid pitchId, string userId) => {
 
-    return Results.Created($"/pitch/{pitchId}", userId);
+   var result =  await service.pitchSignUp(pitchId, new User(userId));
+
+    if (result.success == true)
+    {
+        return Results.Created($"{userId} sign up pitch {pitchId} successfully", result);
+    }
+    else return Results.Json(result);
 });
 
 
