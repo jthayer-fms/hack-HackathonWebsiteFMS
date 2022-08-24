@@ -2,13 +2,11 @@ import axios from "axios";
 
 const baseUrl = "https://localhost:5001/";
 
-export async function saveEvent(event) {
-  // console.log(event, "event")
+export async function savePitch(pitch) {
   return axios.post(baseUrl + "events", {
     headers: {"Access-Control-Allow-Origin": "*"},
     body: {
-      name: event.name,
-      description: event.description
+      description: pitch.description
     }
   })
 }

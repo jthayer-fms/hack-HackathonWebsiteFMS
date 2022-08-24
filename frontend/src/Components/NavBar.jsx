@@ -14,10 +14,10 @@ export default function NavBar() {
             </NavLink>
           </li>
           <li class="nav-item">
-            <NavLink className="nav-link active pb-2 pl-2" activeStyle={activeStyle} to="/events">Events</NavLink>
+            <NavLink className="nav-link active pb-2 pl-2" activeStyle={activeStyle} to="/events">Pitches</NavLink>
           </li>
           <li class="nav-item">
-            <NavLink className="nav-link active pb-2 pl-2" activeStyle={activeStyle} to="/checkout">Create Event</NavLink>
+            <NavLink className="nav-link active pb-2 pl-2" activeStyle={activeStyle} to="/checkout">Create</NavLink>
           </li>
         </ul>
       </div>

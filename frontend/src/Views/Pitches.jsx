@@ -10,7 +10,7 @@ import { useParams, Link } from 'react-router-dom'
 import {} from 'react-router-dom'
 
 
-export default function Events() {
+export default function Pitches() {
   const {typeEvent} = useParams()
   const {data: events, loading, error} = useFetch(typeEvent)
   console.log(events)
