@@ -1,25 +1,26 @@
 import React from "react";
 
 export default function TextField(props) {
-  const {id, type, label, onChange} = props
+  const {id, type, label, error, touched, onChange} = props
+
   return (
     <div className="form-group hide-icon col-md-4 mb-3">
-      <label for="defaultTextInputIconText">{label}</label>
+      <label htmlFor="defaultTextInputIconText">{label}</label>
       <div className="input-group">
         <span className="prepend-placeholder"></span>
         <input
           type={type}
-          className="form-control"
+          className={`form-control ${touched && error && 'is-invalid'}`}
           id={id}
           onChange={onChange}
-          autocomplete="off" />
+          autoComplete="off" />
         <div className="input-group-prepend">
           <span className="input-group-text">
             <i className="feedback-icon fa fas fa-user"></i>
           </span>
         </div>
-        <div class="form-feedback">
-          <small class="invalid-feedback">Example invalid message text</small>
+        <div className="form-feedback">
+          <small className="invalid-feedback">{error}</small>
         </div>
       </div>
     </div>
