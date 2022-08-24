@@ -19,11 +19,19 @@ export default function Checkout() {
   const [pitch, setPitch] = useState(emptyPitch);
   const [status, setStatus] = useState(STATUS.IDLE)
   const [saveError, setError] = useState(null)
+  const [touched, setTouched] = useState({})
+  console.log(touched, "touched")
 
-  function handleChange(e) {
-    console.log(e.target.value)
+  const errors = getErrors(pitch)
+  const isValid = Object.keys(errors).length === 0
+
+  function handleChange(event) {
     setPitch((curPitch) => {
-      return { ...curPitch, [e.target.id] : e.target.value }
+      return { ...curPitch, [event.target.id] : event.target.value }
+    })
+    
+    setTouched((cur) => {
+      return { ...cur, [event.target.id]: true}
     })
   }
 
@@ -31,12 +39,24 @@ export default function Checkout() {
     event.preventDefault();
     event.stopPropagation();
     setStatus(STATUS.SUBMITTING)
-    try {
-      await savePitch(pitch)
-      setStatus(STATUS.COMPLETED)
-    } catch (error) {
-      setError(error);
+    if (isValid) {
+      try {
+        await savePitch(pitch)
+        setStatus(STATUS.COMPLETED)
+      } catch (error) {
+        setError(error);
+      }
+    } else {
+      setStatus(STATUS.SUBMITTED)
     }
+  }
+
+  function getErrors(pitch) {
+    const result = {}
+    if (pitch.description.length < 3) {
+      result.description = "A description must contain at least three characters"
+    }
+    return result
   }
 
   if(saveError) throw saveError;
@@ -48,17 +68,13 @@ export default function Checkout() {
     <>
       <h1>Create Event</h1>
       <form onSubmit={handleSubmit}>
-        <TextField 
-          id="name"
-          type="text"
-          label="Name"
-          value={pitch.name}
-          onChange={handleChange} />
         <TextField
           id="description"
           type="text"
           label="Description"
           value={pitch.description}
+          error={errors.description}
+          touched={touched.description}
           onChange={handleChange} />
         <div>
           <input
