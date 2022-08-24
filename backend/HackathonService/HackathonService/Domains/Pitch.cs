@@ -10,14 +10,22 @@
             this.creator = creator;
         }
 
-        public void signUp(User user)
+        public void signUp(string user)
         {
             if (!teamMembers.Contains(user))
             {
                 teamMembers?.Add(user);
             }
             else
-                throw new Exception("the user signed up");
+            { 
+                throw new Exception("the user signed up"); 
+            }
+
+            if (teamMembers.Count >= 4)
+            {
+                throw new Exception("the pitch has maximum of 4 members");
+            }
+
         }
 
         public  void Vote()
@@ -38,7 +46,7 @@
 
         public User? creator { get; set; }
 
-        public List<User>? teamMembers { get; set; } = new List<User>();
+        public List<string>? teamMembers { get; set; } = new List<string>();
 
         public  int votes { get; set; } = 0;
     }

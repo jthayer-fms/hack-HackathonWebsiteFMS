@@ -11,21 +11,36 @@ namespace HackathonService.Services
         {
             this.provider = provider;
         }
-        public async Task<signUpResult> pitchSignUp(Guid id, User user)
+        public async Task<Result> PitchSignUp(Guid id, User user)
         {
            Pitch pitch =  await this.provider.GetById(id);
 
             try {
-                pitch.signUp(user);
-                return new signUpResult { success = true };
+                pitch.signUp(user.name);
+                return new Result { success = true };
             }
             catch (Exception e)
             {
-                return new signUpResult { success = false };
-            }
-          
-            
+                return new Result { success = false , message = e.Message};
+            }         
         }
 
+        public async Task<Result> Vote(Guid id, User user)
+        {
+            Pitch pitch = await this.provider.GetById(id);
+
+            pitch.Vote();
+            
+            return new Result { success = true };
+        }
+
+        public async Task<Result> Unvote(Guid id, User user)
+        {
+            Pitch pitch = await this.provider.GetById(id);
+
+            pitch.UnVote();
+
+            return new Result { success = true };
+        }
     }
 }

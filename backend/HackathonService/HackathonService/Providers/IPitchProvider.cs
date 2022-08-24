@@ -6,5 +6,8 @@ namespace HackathonService.Providers
     {
         Task<Pitch> SignUp(Guid id, User user);
         Task<Pitch> GetById(Guid id);
+
+        // negative case test
+        Task<Pitch> GetByIdReturnInvalidOne(Guid id);
     }
 }

@@ -4,6 +4,10 @@ namespace HackathonService.Services
 {
     public interface IPitchService
     {
-        Task<signUpResult> pitchSignUp(Guid id, User user);
+        Task<Result> PitchSignUp(Guid id, User user);
+
+        Task<Result> Vote(Guid id, User user);
+
+        Task<Result> Unvote(Guid id, User user);
     }
 }

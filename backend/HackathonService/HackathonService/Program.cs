@@ -72,25 +72,38 @@ app.MapGet("/pitches", [EnableCors("AllowSpecificOrigins")] async () => {
     return Results.Created($"/pitches", pitches);
 });
 
-app.MapPut("/pitch/vote", async (string pitchId, string userId) => {
+app.MapPut("/pitch/vote", async (IPitchService service, Guid pitchId, string userId) => {
 
-    return Results.Created($"/pitch/{pitchId}", pitchId);
-});
-
-app.MapPut("/pitch/unVote", async (Pitch pitchId, string userId) => {
-
-    return Results.Created($"/pitch/{pitchId}", userId);
-});
-
-app.MapPut("/pitch/signUp", async (IPitchService service, Guid pitchId, string userId) => {
-
-   var result =  await service.pitchSignUp(pitchId, new User(userId));
+    var result = await service.Vote(pitchId, new User(userId));
 
     if (result.success == true)
     {
         return Results.Created($"{userId} sign up pitch {pitchId} successfully", result);
     }
     else return Results.Json(result);
+
+});
+
+app.MapPut("/pitch/unvote", async (IPitchService service, Guid pitchId, string userId) => {
+
+    var result = await service.Unvote(pitchId, new User(userId));
+
+    if (result.success == true)
+    {
+        return Results.Created($"{userId} sign up pitch {pitchId} successfully", result);
+    }
+    else return Results.Json(result);
+});
+
+app.MapPut("/pitch/signUp", async (IPitchService service, Guid pitchId, string userId) => {
+
+   var result =  await service.PitchSignUp(pitchId, new User(userId));
+
+    if (result.success == true)
+    {
+        return Results.Created($"{userId} sign up pitch {pitchId} successfully", result);
+    }
+    else return Results.BadRequest(result);
 });
 
 
