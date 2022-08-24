@@ -1,0 +1,9 @@
+.car {
+  max-width: 300px;
+}
+
+@media (min-width: 576px){
+  .card-columns {
+    column-count: 4;
+  };
+} 

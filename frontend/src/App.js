@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from "react";
+import {Routes, Route} from 'react-router-dom'
+
 import './App.css';
+import Events from './Views/Events'
+import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
+import EventDetails from './Views/EventDetails';
+import Checkout from './Components/Checkout'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <main className="pl-5 pr-5">
+        <Routes>
+          <Route path="/" element={<h1>Welcome to the events site</h1>} />
+          <Route path="/:typeEvent" element={<Events />} />
+          <Route path="/:typeEvent/:id" element={<EventDetails />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
