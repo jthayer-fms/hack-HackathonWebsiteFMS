@@ -4,7 +4,7 @@ export default function TextField(props) {
   const {id, type, label, error, touched, onChange} = props
 
   return (
-    <div className="form-group hide-icon col-md-4 mb-3">
+    <div className="form-group hide-icon mb-3">
       <label htmlFor="defaultTextInputIconText">{label}</label>
       <div className="input-group">
         <span className="prepend-placeholder"></span>

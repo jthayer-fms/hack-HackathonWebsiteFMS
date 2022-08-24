@@ -6,7 +6,8 @@ import Pitches from './Views/Pitches'
 import NavBar from './Components/NavBar';
 import Footer from './Components/Footer';
 import PitchDetails from './Views/PitchDetails';
-import Checkout from './Components/Checkout'
+// import Checkout from './Components/Checkout'
+import CreatePitch from './Views/CreatePitch'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/" element={<h1>Welcome to the events site</h1>} />
           <Route path="/:typeEvent" element={<Pitches />} />
           <Route path="/:typeEvent/:id" element={<PitchDetails />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/create" element={<CreatePitch />} />
         </Routes>
       </main>
       <Footer />

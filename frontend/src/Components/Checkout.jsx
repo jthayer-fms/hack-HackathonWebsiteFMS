@@ -66,7 +66,6 @@ export default function Checkout() {
 
   return (
     <>
-      <h1>Create Event</h1>
       <form onSubmit={handleSubmit}>
         <TextField
           id="description"
@@ -76,13 +75,14 @@ export default function Checkout() {
           error={errors.description}
           touched={touched.description}
           onChange={handleChange} />
-        <div>
+        <div className="d-flex justify-content-end">
           <input
             type="submit"
             className="btn btn-primary"
-            value="Save Shipping Info"
+            value="Submit"
             disabled={status === STATUS.SUBMITTING}
           />
+          {/* <i class="fa fas fa-user pr-2"></i> */}
         </div>
       </form>
     </>

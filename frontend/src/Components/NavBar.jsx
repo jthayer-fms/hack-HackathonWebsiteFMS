@@ -15,7 +15,7 @@ export default function NavBar() {
             <NavLink className="nav-link active pb-2 pl-2" to="/events">Pitches</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active pb-2 pl-2" to="/checkout">Create</NavLink>
+            <NavLink className="nav-link active pb-2 pl-2" to="/create">Create</NavLink>
           </li>
         </ul>
       </div>
