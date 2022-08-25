@@ -1,16 +1,22 @@
 ﻿using HackathonService.Dtos;
+using HackathonService.Persistency;
 
 namespace HackathonService.Queries
 {
-    public class Events :IEvents
+    public class Events : IEvents
     {
-        public Events()
-        { 
+        private readonly HackContext _context;
+
+        public Events(HackContext context)
+        {
+            _context = context;
         }
         public async Task<HackathonEvent> GetById(Guid Id)
         {
-            var exisitingEvent = new HackathonEvent();
-            return exisitingEvent;
+            var eventByID = await _context.Events.FindAsync(Id);
+            if (eventByID == null)
+                return new HackathonEvent();
+            return eventByID;   
         }
     }
 }
